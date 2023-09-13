@@ -1,5 +1,5 @@
 // TASK 1 - Напишіть функцію isString, яка перевірятиме, чи є передане значення рядком. Потім використовуйте її для звуження типу змінної.
-function isString(value: unknown): boolean {
+function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
 
@@ -13,7 +13,7 @@ function isString(value: unknown): boolean {
 
 // TASK 2 - У вас є масив з елементами різних типів. Напишіть функцію, яка приймає цей масив і фільтрує його так, щоб у підсумку в ньому залишилися тільки рядки. Використовуйте захисника типу для цього завдання.
 function filterStrings(arr: unknown[]): string[] {
-  return arr.filter(item => isString(item)) as string[];
+  return arr.filter(isString);
 }
 
 // Example
@@ -22,29 +22,29 @@ function filterStrings(arr: unknown[]): string[] {
 // console.log(filteredArray); // ["apple", "banana", "cherry"]
 
 // TASK 3 - У вас є об'єкт, який може містити довільні властивості. Напишіть функцію, яка приймає цей об'єкт і повертає значення однієї з властивостей, якщо воно існує і має певний тип.
-function getValueByType(obj: { [key: string]: any }, propertyName: string, expectedType: string): any {
-  if (propertyName in obj) {
-    const propertyValue = obj[propertyName];
-    if (typeof propertyValue === expectedType) {
-      return propertyValue;
-    }
+function getValueByKey(obj: object): string | void {
+  const values = Object.values(obj);
+
+  if (!values.length) {
+    return;
   }
-  return null;
+
+  const stringValue = values.find(isString);
+
+  return stringValue ?? undefined;
 }
 
-// // Example
-// const myObject = {
-//   name: 'John',
-//   age: 30,
-//   city: 'New York',
-// };
+// Example
+type myObjectType = {
+  name: string;
+  age: number;
+};
+const myObject: myObjectType = {
+  name: 'John',
+  age: 30,
+};
 
-// const nameValue = getValueByType(myObject, 'name', 'string');
-// if (nameValue !== null) {
-//   console.log(`name: ${nameValue}`);
-// } else {
-//   console.log('propertyName or expectedType is not found');
-// }
+// console.log(getValueByKey(myObject));
 
 // TASK 4 - Створіть кілька захисників типу, кожен з яких перевіряє певний аспект об'єкта (наприклад, наявність певної властивості або її тип). Потім напишіть функцію, яка використовує цих захисників у комбінації для звуження типу об'єкта до більш конкретного типу.
 function hasIdProperty(obj: object): obj is { id: number } {
