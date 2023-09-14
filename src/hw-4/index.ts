@@ -22,28 +22,18 @@ function filterStrings(arr: unknown[]): string[] {
 // console.log(filteredArray); // ["apple", "banana", "cherry"]
 
 // TASK 3 - У вас є об'єкт, який може містити довільні властивості. Напишіть функцію, яка приймає цей об'єкт і повертає значення однієї з властивостей, якщо воно існує і має певний тип.
-function getValueByKey(obj: object): string | void {
-  const values = Object.values(obj);
+type User = {
+  name: string;
+};
 
-  if (!values.length) {
-    return;
-  }
-
-  const stringValue = values.find(isString);
-
-  return stringValue ?? undefined;
+function isUser(x: unknown): x is User {
+  return x instanceof Object && 'name' in x;
 }
 
-// Example
-type myObjectType = {
-  name: string;
-  age: number;
-};
-const myObject: myObjectType = {
-  name: 'John',
-  age: 30,
-};
-
+function getValueByKey(param: unknown): string {
+  if (isUser(param)) return param.name;
+  throw new Error('Type is not supported');
+}
 // console.log(getValueByKey(myObject));
 
 // TASK 4 - Створіть кілька захисників типу, кожен з яких перевіряє певний аспект об'єкта (наприклад, наявність певної властивості або її тип). Потім напишіть функцію, яка використовує цих захисників у комбінації для звуження типу об'єкта до більш конкретного типу.
