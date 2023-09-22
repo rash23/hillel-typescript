@@ -22,8 +22,10 @@ class Circle extends Shape {
     return Math.PI * this.radius ** 2;
   }
 }
-
-class Rectangle extends Shape {
+interface IRectangle extends Shape {
+  print: () => string;
+}
+class Rectangle extends Shape implements IRectangle {
   constructor(
     public readonly width: number,
     public readonly height: number,
