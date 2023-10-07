@@ -83,7 +83,6 @@ class Dictionary<T> {
   }
 }
 
-// Приклад використання:
 const myDictionary = new Dictionary<number>();
 myDictionary.set('one', 1);
 myDictionary.set(2, 3.14);
