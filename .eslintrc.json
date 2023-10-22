@@ -12,7 +12,7 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "no-console": "error",
+    "no-console": "warn",
     "prettier/prettier": "error",
     "@typescript-eslint/prefer-nullish-coalescing": "error",
     "@typescript-eslint/prefer-optional-chain": "error",

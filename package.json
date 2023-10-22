@@ -29,5 +29,8 @@
       "eslint ./ --max-warnings=0",
       "git add"
     ]
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
 }
