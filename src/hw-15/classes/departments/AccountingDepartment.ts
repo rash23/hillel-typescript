@@ -9,7 +9,7 @@ export class AccountingDepartment {
   private expenses: number = 0;
 
   public addEmployee(employee: Employee): void {
-    this.employees.addClient(employee);
+    this.employees.addEmployee(employee);
   }
 
   public addAnimal(animal: Animal): void {

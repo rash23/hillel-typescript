@@ -1,6 +1,6 @@
 import { Clients } from '../clients/Clients';
-import { IObserver, IObservable } from '../../types/observable';
 import { Client } from '../clients/Client';
+import { IObserver, IObservable } from '../../types/observable';
 
 export class AdvertisingDepartment implements IObserver {
   clients: Client[] = [];
@@ -12,7 +12,7 @@ export class AdvertisingDepartment implements IObserver {
     }
   }
 
-  private sendAdvertising(): void {
+  public sendAdvertising(): void {
     this.clients.forEach(client => {
       console.log(`${client.visitor.name}, the tickets on sale now.`);
     });

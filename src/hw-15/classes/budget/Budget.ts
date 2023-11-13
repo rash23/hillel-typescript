@@ -28,8 +28,7 @@ export class Budget extends Observable {
     this.notify();
   }
 
-  // Бюджетний облік і фінансові звіти
-  financialReport(): void {
+  public financialReport(): void {
     console.log('Financial Report:');
     console.log(`Total Revenue: $${this._revenue.totalRevenue}`);
     console.log(`Expenses: $${this._expenses.expensesCount}`);

@@ -8,7 +8,7 @@ export class Employees extends Observable {
     return this._employees;
   }
 
-  public addClient(employee: Employee): void {
+  public addEmployee(employee: Employee): void {
     this._employees.push(employee);
     this.notify();
   }

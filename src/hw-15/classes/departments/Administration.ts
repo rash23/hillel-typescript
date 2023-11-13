@@ -11,7 +11,7 @@ export class Administration extends Observable {
   }
 
   public addEmployee(employee: Employee): void {
-    this._employees.addClient(employee);
+    this._employees.addEmployee(employee);
   }
 
   public removeEmployee(employee: Employee): void {

@@ -2,10 +2,12 @@ export class Expenses {
   private _expenses: number = 0;
 
   public get expensesCount(): number {
-    return this._expenses;
+    return Math.max(0, this._expenses); // Ensure expensesCount is not negative
   }
 
   public addExpenses(amount: number): void {
-    this._expenses += amount;
+    if (amount >= 0) {
+      this._expenses += amount;
+    }
   }
 }
